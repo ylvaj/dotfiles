@@ -16,7 +16,7 @@ sudo chmod a+rx /usr/local/bin/yt-dlp /usr/local/bin/youtube-dl
 DEBIAN_FRONTEND="noninteractive" TZ="Europe/Berlin" sudo apt-get update > /dev/null 2>&1
 DEBIAN_FRONTEND="noninteractive" TZ="Europe/Berlin" sudo apt-get install -y rename \
     gawk rsync python3-pip git ncdu rename mkvtoolnix vim aria2 python3-pip \
-    task-spooler mediainfo iputils-ping > /dev/null 2>&1
+    task-spooler mediainfo iputils-ping android-sdk-platform-tools sdkmanager > /dev/null 2>&1
 #   adb android-sdk-platform-tools-common 
 curl -sSL https://github.com/Backblaze/B2_Command_Line_Tool/releases/latest/download/b2-linux -o /tmp/b2
 sudo install /tmp/pixeldrain /usr/local/bin
