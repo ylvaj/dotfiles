@@ -1,0 +1,46 @@
+PATH="$PATH:~/bin:~/:$HOME/android/cmdline-tools/bin"
+export ANDROID_SDK_ROOT=$HOME/android
+
+prepare_android (){
+   sudo apt-get update > /dev/null 2>&1
+   DEBIAN_FRONTEND="noninteractive" TZ="Europe/Berlin" sudo apt-get install default-jdk-headless gradle -y > /dev/null 2>&1
+   mkdir $HOME/android
+   #export ANDROID_SDK_ROOT=$HOME/android
+   if [ -x $HOME/android/cmdline-tools/bin/sdkmanager ]; then
+       echo "Tools already installed"
+        yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses || true
+   else
+       cd $HOME/android
+       curl -sSL https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -o /tmp/commandlinetools-linux-latest.zip
+       unzip -oq /tmp/commandlinetools-linux-latest.zip
+       PATH="$PATH:$HOME/android/cmdline-tools/bin:$HOME/android/platform-tools:$HOME/android/android-ndk-r25c"
+       yes | sdkmanager --sdk_root=${ANDROID_SDK_ROOT} --licenses || true
+       curl -sSL https://dl.google.com/android/repository/android-ndk-r25c-linux.zip -o /tmp/android-ndk-r25c-linux.zip
+       unzip -oq /tmp/android-ndk-r25c-linux.zip
+   fi
+# sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-21"
+# sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-23"
+# sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-24"
+# sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-25"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-26"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-27"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-28"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-29"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-30"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-31"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-32"
+  sdkmanager --sdk_root=$HOME/android --channel=0  "platform-tools" --install "platform-tools" "platforms;android-33"
+# sdkmanager --install "ndk;23.1.7779620" --sdk_root=${ANDROID_SDK_ROOT}
+# sdkmanager --install "ndk;25.1.8937393" --sdk_root=${ANDROID_SDK_ROOT}
+
+#10	10	API level 29
+#Pie	9	API level 28
+#Oreo	8.1.0	API level 27
+#Oreo	8.0.0	API level 26
+#Nougat	7.1	API level 25
+#Nougat	7.0	API level 24
+#Marshmallow	6.0	API level 23
+#Lollipop	5.1	API level 22
+#Lollipop	5.0	API level 21
+#KitKat	4.4 - 4.4.4	API level 19
+}
